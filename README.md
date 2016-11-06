@@ -24,6 +24,9 @@ dependencies {
 }
 ```
 
+##Demo
+[SocialLoginManager.apk](../blob/master/SocialLoginManager.apk)
+
 ##Usage
 ```java
 public class App extends MultiDexApplication {
