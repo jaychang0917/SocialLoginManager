@@ -9,11 +9,11 @@ In your project level build.gradle :
 
 ```java
 allprojects {
-		repositories {
-			...
-			maven { url "https://jitpack.io" }
-		}
-	}
+    repositories {
+        ...
+        maven { url "https://jitpack.io" }
+    }
+}
 ```
 
 In your app level build.gradle :
