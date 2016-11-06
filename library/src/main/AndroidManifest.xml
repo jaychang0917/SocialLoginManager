@@ -3,7 +3,7 @@
 
     <application>
         <activity
-            android:name=".HiddenActivity"
+            android:name=".FbLoginHiddenActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             />
     </application>

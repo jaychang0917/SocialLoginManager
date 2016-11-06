@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
   private void login() {
     SocialLoginManager.getInstance(this)
+      .facebook()
       .withProfile()
       .login()
       .subscribe(socialUser -> {

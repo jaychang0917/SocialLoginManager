@@ -8,20 +8,23 @@ import android.content.Intent;
 import com.facebook.AccessToken;
 import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
-import com.facebook.login.widget.LoginButton;
-
-import java.lang.ref.WeakReference;
 
 import rx.Observable;
 import rx.subjects.PublishSubject;
 
+import static com.jaychang.slm.SocialLoginManager.SocialPlatform.FACEBOOK;
+import static com.jaychang.slm.SocialLoginManager.SocialPlatform.GOOGLE;
+
 public class SocialLoginManager {
+
+  private static final String ERROR = "You must choose a social platform.";
 
   @SuppressLint("StaticFieldLeak")
   private static SocialLoginManager instance;
   private PublishSubject<SocialUser> userEmitter;
   private Context appContext;
   private boolean withProfile;
+  private SocialPlatform socialPlatform;
 
   private SocialLoginManager(Context context) {
     appContext = context;
@@ -39,8 +42,14 @@ public class SocialLoginManager {
     return this;
   }
 
-  boolean isWithProfile() {
-    return this.withProfile;
+  public SocialLoginManager facebook() {
+    this.socialPlatform = FACEBOOK;
+    return this;
+  }
+
+  public SocialLoginManager google() {
+    this.socialPlatform = GOOGLE;
+    return this;
   }
 
   public static void init(Application application) {
@@ -49,18 +58,40 @@ public class SocialLoginManager {
 
   public Observable<SocialUser> login() {
     userEmitter = PublishSubject.create();
-    Intent intent = new Intent(appContext, HiddenActivity.class);
+    Intent intent = new Intent(appContext, getLoginActivity());
     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
     appContext.startActivity(intent);
     return userEmitter;
   }
 
+  private Class<?> getLoginActivity() {
+    Class<?> clazz;
+    if (socialPlatform == FACEBOOK) {
+      clazz = FbLoginHiddenActivity.class;
+    } else {
+      throw new IllegalStateException(ERROR);
+    }
+    return clazz;
+  }
+
   public void logout() {
-    LoginManager.getInstance().logOut();
+    if (socialPlatform == FACEBOOK) {
+      LoginManager.getInstance().logOut();
+    }
+
+    throw new IllegalStateException(ERROR);
   }
 
   public boolean isLogined() {
-    return AccessToken.getCurrentAccessToken() != null;
+    if (socialPlatform == FACEBOOK) {
+      return AccessToken.getCurrentAccessToken() != null;
+    }
+
+    throw new IllegalStateException(ERROR);
+  }
+
+  boolean isWithProfile() {
+    return this.withProfile;
   }
 
   void onLoginSuccess(SocialUser socialUser) {
@@ -76,6 +107,10 @@ public class SocialLoginManager {
       Throwable copy = new Throwable(throwable);
       userEmitter.onError(copy);
     }
+  }
+
+  enum SocialPlatform {
+    FACEBOOK, GOOGLE
   }
 
 }

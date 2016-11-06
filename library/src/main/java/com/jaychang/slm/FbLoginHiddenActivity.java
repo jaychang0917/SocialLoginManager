@@ -20,7 +20,7 @@ import org.json.JSONObject;
 import java.util.Arrays;
 import java.util.List;
 
-public class HiddenActivity extends AppCompatActivity
+public class FbLoginHiddenActivity extends AppCompatActivity
   implements FacebookCallback<LoginResult>, GraphRequest.GraphJSONObjectCallback {
 
   private static final String PHOTO_URL = "https://graph.facebook.com/%1$s/picture?type=large";
