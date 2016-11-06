@@ -28,7 +28,7 @@ dependencies {
 [SocialLoginManager.apk](https://github.com/jaychang0917/SocialLoginManager/raw/master/SocialLoginManager.apk)
 
 ##Presupposition
-**You must setup your `Manifest.xml` for facebook / google to use this libary.**
+**You must setup your `Manifest.xml` for facebook / google login to use this libary.**
 
 For example:
 ###Facebook login
