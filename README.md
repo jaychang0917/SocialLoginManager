@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
   private void loginByFacebook() {
     SocialLoginManager.getInstance(this)
       .facebook()
-      .withProfile()
+      .withProfile() // make a GraphRequest to obtain profile info
       .login()
       .subscribe(socialUser -> {
           Log.d(TAG, "userId: " + socialUser.userId);
