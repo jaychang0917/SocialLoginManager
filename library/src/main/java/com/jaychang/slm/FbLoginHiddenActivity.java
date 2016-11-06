@@ -33,7 +33,12 @@ public class FbLoginHiddenActivity extends AppCompatActivity
 
     callbackManager = CallbackManager.Factory.create();
     LoginManager.getInstance().registerCallback(callbackManager, this);
-    LoginManager.getInstance().logInWithReadPermissions(this, PERMISSIONS);
+
+    if (SocialLoginManager.getInstance(this).isWithProfile()) {
+      LoginManager.getInstance().logInWithReadPermissions(this, PERMISSIONS);
+    } else {
+      LoginManager.getInstance().logInWithReadPermissions(this, null);
+    }
   }
 
   @Override

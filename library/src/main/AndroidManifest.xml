@@ -6,6 +6,10 @@
             android:name=".FbLoginHiddenActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             />
+        <activity
+            android:name=".GoogleLoginHiddenActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            />
     </application>
 
 </manifest>

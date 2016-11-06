@@ -1,10 +1,10 @@
 package com.jaychang.demo.slm;
 
-import android.app.Application;
+import android.support.multidex.MultiDexApplication;
 
 import com.jaychang.slm.SocialLoginManager;
 
-public class App extends Application{
+public class App extends MultiDexApplication {
 
   @Override
   public void onCreate() {

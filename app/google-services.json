@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "98248488550",
+    "project_id": "login-demo-1d6cb"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:98248488550:android:516728dfec4fffcf",
+        "android_client_info": {
+          "package_name": "com.jaychang.demo.slm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "98248488550-r9se39278vc4a4vde2ncnecqu2f88kg6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jaychang.demo.slm",
+            "certificate_hash": "6E35893D6C5C69E7E93A6EB48A96CF80CEC48971"
+          }
+        },
+        {
+          "client_id": "98248488550-vr4n9enlm5slcn0j6a0489p5t94m023i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPBBp2P6UugL8lSWKTlce9M43yL7dHuks"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -5,9 +5,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 
-import com.facebook.AccessToken;
 import com.facebook.FacebookSdk;
-import com.facebook.login.LoginManager;
 
 import rx.Observable;
 import rx.subjects.PublishSubject;
@@ -25,6 +23,7 @@ public class SocialLoginManager {
   private Context appContext;
   private boolean withProfile;
   private SocialPlatform socialPlatform;
+  private String clientId;
 
   private SocialLoginManager(Context context) {
     appContext = context;
@@ -47,7 +46,8 @@ public class SocialLoginManager {
     return this;
   }
 
-  public SocialLoginManager google() {
+  public SocialLoginManager google(String clientId) {
+    this.clientId = clientId;
     this.socialPlatform = GOOGLE;
     return this;
   }
@@ -58,36 +58,23 @@ public class SocialLoginManager {
 
   public Observable<SocialUser> login() {
     userEmitter = PublishSubject.create();
-    Intent intent = new Intent(appContext, getLoginActivity());
-    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-    appContext.startActivity(intent);
+    appContext.startActivity(getIntent());
     return userEmitter;
   }
 
-  private Class<?> getLoginActivity() {
-    Class<?> clazz;
+  public Intent getIntent() {
     if (socialPlatform == FACEBOOK) {
-      clazz = FbLoginHiddenActivity.class;
+      Intent intent = new Intent(appContext, FbLoginHiddenActivity.class);
+      intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+      return intent;
+    } else if (socialPlatform == GOOGLE) {
+      Intent intent = new Intent(appContext, GoogleLoginHiddenActivity.class);
+      intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+      intent.putExtra(GoogleLoginHiddenActivity.EXTRA_CLIENT_ID, clientId);
+      return intent;
     } else {
       throw new IllegalStateException(ERROR);
     }
-    return clazz;
-  }
-
-  public void logout() {
-    if (socialPlatform == FACEBOOK) {
-      LoginManager.getInstance().logOut();
-    }
-
-    throw new IllegalStateException(ERROR);
-  }
-
-  public boolean isLogined() {
-    if (socialPlatform == FACEBOOK) {
-      return AccessToken.getCurrentAccessToken() != null;
-    }
-
-    throw new IllegalStateException(ERROR);
   }
 
   boolean isWithProfile() {
