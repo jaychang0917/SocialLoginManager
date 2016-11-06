@@ -1,0 +1,11 @@
+<manifest package="com.jaychang.slm"
+          xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+        <activity
+            android:name=".HiddenActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            />
+    </application>
+
+</manifest>
