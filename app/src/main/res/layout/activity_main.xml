@@ -8,19 +8,26 @@
 
     <Button
         android:id="@+id/fbLoginButton"
-        style="@style/com_facebook_loginview_default_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="30dp"
+        android:background="#3b5998"
+        android:textColor="#fff"
+        android:textAllCaps="false"
         android:layout_marginTop="30dp"
         android:textStyle="bold"
         android:text="Log in with Facebook" />
 
-    <com.google.android.gms.common.SignInButton
+    <Button
         android:id="@+id/googleLoginButton"
         android:layout_width="match_parent"
+        android:textColor="#555"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:background="#fff"
+        android:text="Log in with Google"
+        android:textAllCaps="false"
         android:layout_gravity="center_horizontal" />
 
 </LinearLayout>

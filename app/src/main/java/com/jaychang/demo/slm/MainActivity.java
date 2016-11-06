@@ -5,13 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Button;
 
-import com.google.android.gms.common.SignInButton;
-import com.jaychang.demo.slm.R;
 import com.jaychang.slm.SocialLoginManager;
 
 public class MainActivity extends AppCompatActivity {
 
-  private static final String TAG = "MainActivity";
+  private static final String TAG = MainActivity.class.getSimpleName();
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
       loginByFacebook();
     });
 
-    SignInButton googleLoginButton = (SignInButton) findViewById(R.id.googleLoginButton);
+    Button googleLoginButton = (Button) findViewById(R.id.googleLoginButton);
     googleLoginButton.setOnClickListener(view -> {
        loginByGoogle();
     });
