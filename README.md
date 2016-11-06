@@ -25,7 +25,7 @@ dependencies {
 ```
 
 ##Demo
-[SocialLoginManager.apk](../blob/master/SocialLoginManager.apk)
+[SocialLoginManager.apk](../SocialLoginManager.apk)
 
 ##Usage
 ```java
