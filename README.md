@@ -28,6 +28,9 @@ dependencies {
 [SocialLoginManager.apk](https://github.com/jaychang0917/SocialLoginManager/raw/master/SocialLoginManager.apk)
 
 ##Usage
+##Presupposition
+*You must setup your `Manifest.xml` for facebook / google to use this libary.*
+
 ```java
 public class App extends MultiDexApplication {
 
