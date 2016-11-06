@@ -27,9 +27,46 @@ dependencies {
 ##Demo
 [SocialLoginManager.apk](https://github.com/jaychang0917/SocialLoginManager/raw/master/SocialLoginManager.apk)
 
-##Usage
 ##Presupposition
-*You must setup your `Manifest.xml` for facebook / google to use this libary.*
+**You must setup your `Manifest.xml` for facebook / google to use this libary.**
+
+For example:
+###Facebook login
+```xml
+<application
+    ...
+    <meta-data
+        android:name="com.facebook.sdk.ApplicationId"
+        android:value="@string/facebook_app_id" />
+
+    <activity
+        android:name="com.facebook.FacebookActivity"
+        android:configChanges=
+            "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.Translucent.NoTitleBar"
+        tools:replace="android:theme" />
+
+    <activity
+        android:name="com.facebook.CustomTabActivity"
+        android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.VIEW" />
+
+            <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="android.intent.category.BROWSABLE" />
+
+            <data android:scheme="@string/fb_login_protocol_scheme" />
+        </intent-filter>
+    </activity>
+</application>
+```
+##Google Login
+- Put your `google-services.json` under `app` directory.
+- Add `classpath 'com.google.gms:google-services:3.0.0'` in your project level build.gralde.
+- Add `apply plugin: 'com.google.gms.google-services'` in your app level build.gralde
+
+##Usage
 
 ```java
 public class App extends MultiDexApplication {
