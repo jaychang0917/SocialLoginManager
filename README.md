@@ -29,7 +29,7 @@ dependencies {
 
 ##Usage
 
-###Step 0
+##Step 0
 **You must setup your `Manifest.xml` for facebook / google login to use this libary.**
 
 For example:
@@ -68,7 +68,7 @@ For example:
 - Add `classpath 'com.google.gms:google-services:3.0.0'` in your project level build.gralde.
 - Add `apply plugin: 'com.google.gms.google-services'` in your app level build.gralde
 
-###Step 1
+##Step 1
 
 ```java
 public class App extends MultiDexApplication {
@@ -81,7 +81,7 @@ public class App extends MultiDexApplication {
 }
 ```
 
-###Step 2
+##Step 2
 ```java
 public class MainActivity extends AppCompatActivity {
 
