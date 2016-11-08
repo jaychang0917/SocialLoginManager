@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
   private void loginByFacebook() {
     SocialLoginManager.getInstance(this)
       .facebook()
-      .withProfile()
       .login()
       .subscribe(socialUser -> {
           Log.d(TAG, "userId: " + socialUser.userId);

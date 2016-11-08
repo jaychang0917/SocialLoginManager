@@ -21,7 +21,7 @@ public class SocialLoginManager {
   private static SocialLoginManager instance;
   private PublishSubject<SocialUser> userEmitter;
   private Context appContext;
-  private boolean withProfile;
+  private boolean withProfile = true;
   private SocialPlatform socialPlatform;
   private String clientId;
 
@@ -36,8 +36,14 @@ public class SocialLoginManager {
     return instance;
   }
 
+  @Deprecated
   public SocialLoginManager withProfile() {
     this.withProfile = true;
+    return this;
+  }
+
+  public SocialLoginManager withProfile(boolean withProfile) {
+    this.withProfile = withProfile;
     return this;
   }
 
