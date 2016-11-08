@@ -1,4 +1,5 @@
 #SocialLoginManager
+[![Release](https://jitpack.io/v/jaychang0917/SocialLoginManager.svg)](https://jitpack.io/#jaychang0917/SocialLoginManager)
 
 This library aims to eliminate boilerplate code for social login.
 
