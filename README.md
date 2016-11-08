@@ -31,7 +31,7 @@ dependencies {
 **You must setup your `Manifest.xml` for facebook / google login to use this libary.**
 
 For example:
-###Facebook login
+####Facebook login
 ```xml
 <application
     ...
@@ -61,7 +61,7 @@ For example:
     </activity>
 </application>
 ```
-##Google Login
+####Google Login
 - Put your `google-services.json` under `app` directory.
 - Add `classpath 'com.google.gms:google-services:3.0.0'` in your project level build.gralde.
 - Add `apply plugin: 'com.google.gms.google-services'` in your app level build.gralde
