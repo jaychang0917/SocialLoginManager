@@ -20,14 +20,16 @@ In your app level build.gradle :
 
 ```java
 dependencies {
-    compile 'com.github.jaychang0917:SocialLoginManager:1.0.0'
+    compile 'com.github.jaychang0917:SocialLoginManager:1.1.0'
 }
 ```
 
 ##Demo
 [SocialLoginManager.apk](https://github.com/jaychang0917/SocialLoginManager/raw/master/SocialLoginManager.apk)
 
-##Presupposition
+##Usage
+
+###Step 0
 **You must setup your `Manifest.xml` for facebook / google login to use this libary.**
 
 For example:
@@ -66,7 +68,7 @@ For example:
 - Add `classpath 'com.google.gms:google-services:3.0.0'` in your project level build.gralde.
 - Add `apply plugin: 'com.google.gms.google-services'` in your app level build.gralde
 
-##Usage
+###Step 1
 
 ```java
 public class App extends MultiDexApplication {
@@ -78,6 +80,8 @@ public class App extends MultiDexApplication {
   }
 }
 ```
+
+###Step 2
 ```java
 public class MainActivity extends AppCompatActivity {
 
