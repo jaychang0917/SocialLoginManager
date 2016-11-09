@@ -26,7 +26,7 @@ public class SocialLoginManager {
   private String clientId;
 
   private SocialLoginManager(Context context) {
-    appContext = context;
+    appContext = context.getApplicationContext();
   }
 
   public static synchronized SocialLoginManager getInstance(Context context) {
