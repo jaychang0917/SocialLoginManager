@@ -25,9 +25,6 @@ dependencies {
 }
 ```
 
-##Demo
-[SocialLoginManager.apk](https://github.com/jaychang0917/SocialLoginManager/raw/master/SocialLoginManager.apk)
-
 ##Usage
 
 ##Step 0
