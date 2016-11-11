@@ -139,6 +139,9 @@ public class MainActivity extends AppCompatActivity {
 
 ```
 
+##Change Log
+[Change Log](https://github.com/jaychang0917/SocialLoginManager/blob/master/CHANGELOG.md)
+
 ##License
 ```
 Copyright 2016 Jay Chang
