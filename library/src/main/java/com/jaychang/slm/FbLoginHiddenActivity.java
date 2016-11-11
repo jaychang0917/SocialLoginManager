@@ -19,6 +19,7 @@ import org.json.JSONObject;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.LogManager;
 
 public class FbLoginHiddenActivity extends AppCompatActivity
   implements FacebookCallback<LoginResult>, GraphRequest.GraphJSONObjectCallback {
@@ -33,6 +34,8 @@ public class FbLoginHiddenActivity extends AppCompatActivity
 
     callbackManager = CallbackManager.Factory.create();
     LoginManager.getInstance().registerCallback(callbackManager, this);
+
+    LoginManager.getInstance().logOut();
 
     if (SocialLoginManager.getInstance(this).isWithProfile()) {
       LoginManager.getInstance().logInWithReadPermissions(this, PERMISSIONS);
