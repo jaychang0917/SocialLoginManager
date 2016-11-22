@@ -102,6 +102,12 @@ public class SocialLoginManager {
     }
   }
 
+  void onLoginCancel() {
+    if (userEmitter != null) {
+      userEmitter.onCompleted();
+    }
+  }
+
   enum SocialPlatform {
     FACEBOOK, GOOGLE
   }

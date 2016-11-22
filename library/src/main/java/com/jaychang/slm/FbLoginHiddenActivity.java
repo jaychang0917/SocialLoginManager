@@ -75,6 +75,7 @@ public class FbLoginHiddenActivity extends AppCompatActivity
 
   @Override
   public void onCancel() {
+    SocialLoginManager.getInstance(this).onLoginCancel();
     finish();
   }
 
