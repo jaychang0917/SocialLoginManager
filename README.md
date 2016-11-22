@@ -21,7 +21,7 @@ In your app level build.gradle :
 
 ```java
 dependencies {
-    compile 'com.github.jaychang0917:SocialLoginManager:1.1.1'
+    compile 'com.github.jaychang0917:SocialLoginManager:1.1.2'
 }
 ```
 
@@ -138,6 +138,9 @@ public class MainActivity extends AppCompatActivity {
 }
 
 ```
+
+##Change Log
+[Change Log](https://github.com/jaychang0917/SocialLoginManager/blob/master/CHANGELOG.md)
 
 ##License
 ```
