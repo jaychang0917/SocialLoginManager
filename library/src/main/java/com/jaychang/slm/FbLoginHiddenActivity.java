@@ -19,7 +19,6 @@ import org.json.JSONObject;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.logging.LogManager;
 
 public class FbLoginHiddenActivity extends AppCompatActivity
   implements FacebookCallback<LoginResult>, GraphRequest.GraphJSONObjectCallback {
@@ -93,9 +92,9 @@ public class FbLoginHiddenActivity extends AppCompatActivity
       user.accessToken = AccessToken.getCurrentAccessToken().getToken();
       user.photoUrl = String.format(PHOTO_URL, user.userId);
       SocialUser.Profile profile = new SocialUser.Profile();
-      profile.email = object.getString("email");
-      profile.name = object.getString("name");
-      profile.pageLink = object.getString("link");
+      profile.email = object.has("email")? object.getString("email") : "";
+      profile.name = object.has("name")? object.getString("name"): "";
+      profile.pageLink = object.has("link")? object.getString("link"): "";
       user.profile = profile;
       SocialLoginManager.getInstance(this).onLoginSuccess(user);
     } catch (JSONException e) {
