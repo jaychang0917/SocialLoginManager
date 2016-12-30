@@ -1,6 +1,9 @@
 ##Change Log
 
 ###Version 1.1.3 (2016-11-22)
+Fix facebook login fail if account has no email issue.
+
+###Version 1.1.3 (2016-11-22)
 Fix facebook cancel issue.
 
 ###Version 1.1.2 (2016-11-11)
