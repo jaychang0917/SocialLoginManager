@@ -21,7 +21,7 @@ In your app level build.gradle :
 
 ```java
 dependencies {
-    compile 'com.github.jaychang0917:SocialLoginManager:1.1.3'
+    compile 'com.github.jaychang0917:SocialLoginManager:1.1.4'
 }
 ```
 
