@@ -50,6 +50,7 @@ public class SocialUser implements Serializable {
 
   public static class Profile implements Serializable {
     public String name;
+    public String fullName;
     public String email;
     public String pageLink;
 

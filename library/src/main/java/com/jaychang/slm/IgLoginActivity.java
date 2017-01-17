@@ -90,24 +90,48 @@ public class IgLoginActivity extends AppCompatActivity {
     new OkHttpClient().newCall(request).enqueue(new Callback() {
       @Override
       public void onFailure(Call call, IOException e) {
-        System.out.println("onFailure");
-        SocialLoginManager.getInstance(IgLoginActivity.this).onLoginError(new RuntimeException("instagram login fail"));
-        finish();
+        runOnUiThread(new Runnable() {
+          @Override
+          public void run() {
+            SocialLoginManager.getInstance(IgLoginActivity.this).onLoginError(new RuntimeException("instagram login fail"));
+            finish();
+          }
+        });
       }
 
       @Override
       public void onResponse(Call call, Response response) throws IOException {
+        if (!response.isSuccessful()) {
+          runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+              SocialLoginManager.getInstance(IgLoginActivity.this).onLoginError(new RuntimeException("instagram login fail"));
+              finish();
+            }
+          });
+          return;
+        }
+
         String body = response.body().string();
+
         IgUser igUser = new Gson().fromJson(body, IgUser.class);
-        SocialUser user = new SocialUser();
+
+        final SocialUser user = new SocialUser();
         user.accessToken = igUser.accessToken;
         user.userId = igUser.user.id;
         SocialUser.Profile profile = new SocialUser.Profile();
-        profile.name = igUser.user.fullName;
+        profile.name = igUser.user.username;
+        profile.fullName = igUser.user.fullName;
         user.photoUrl = igUser.user.profilePicture;
         user.profile = profile;
-        SocialLoginManager.getInstance(IgLoginActivity.this).onLoginSuccess(user);
-        finish();
+
+        runOnUiThread(new Runnable() {
+          @Override
+          public void run() {
+            SocialLoginManager.getInstance(IgLoginActivity.this).onLoginSuccess(user);
+            finish();
+          }
+        });
       }
     });
   }

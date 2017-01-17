@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button googleLoginButton = (Button) findViewById(R.id.googleLoginButton);
     googleLoginButton.setOnClickListener(view -> {
-       loginByGoogle();
+      loginByGoogle();
     });
 
     Button igLoginButton = (Button) findViewById(R.id.igLoginButton);
@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "photoUrl: " + socialUser.photoUrl);
         Log.d(TAG, "accessToken: " + socialUser.accessToken);
         Log.d(TAG, "name: " + socialUser.profile.name);
+        Log.d(TAG, "fullName: " + socialUser.profile.fullName);
       }, error -> {
         Log.d(TAG, "error: " + error.getMessage());
       });
