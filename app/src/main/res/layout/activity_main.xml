@@ -26,7 +26,19 @@
         android:layout_height="wrap_content"
         android:textStyle="bold"
         android:background="#fff"
+        android:layout_marginBottom="30dp"
         android:text="Log in with Google"
+        android:textAllCaps="false"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:id="@+id/igLoginButton"
+        android:layout_width="match_parent"
+        android:textColor="#555"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:background="#fff"
+        android:text="Log in with Instagram"
         android:textAllCaps="false"
         android:layout_gravity="center_horizontal" />
 
