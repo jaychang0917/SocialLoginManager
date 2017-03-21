@@ -1,9 +1,9 @@
-#SocialLoginManager
+# SocialLoginManager
 [![Release](https://jitpack.io/v/jaychang0917/SocialLoginManager.svg)](https://jitpack.io/#jaychang0917/SocialLoginManager)
 
 This library aims to eliminate boilerplate code for social login.
 
-##Setup
+## Setup
 To use this library your minSdkVersion must be >= 15.
 
 In your project level build.gradle :
@@ -25,13 +25,13 @@ dependencies {
 }
 ```
 
-##Usage
+## Usage
 
-##Step 0
+## Step 0
 **You must setup your `Manifest.xml` for facebook / google login to use this libary.**
 
 For example:
-####Facebook login
+#### Facebook login
 ```xml
 <application
     ...
@@ -61,12 +61,12 @@ For example:
     </activity>
 </application>
 ```
-####Google Login
+#### Google Login
 - Put your `google-services.json` under `app` directory.
 - Add `classpath 'com.google.gms:google-services:3.0.0'` in your project level build.gralde.
 - Add `apply plugin: 'com.google.gms.google-services'` in your app level build.gralde
 
-##Step 1
+## Step 1
 
 ```java
 public class App extends MultiDexApplication {
@@ -79,7 +79,7 @@ public class App extends MultiDexApplication {
 }
 ```
 
-##Step 2
+## Step 2
 ```java
 public class MainActivity extends AppCompatActivity {
 
@@ -139,10 +139,10 @@ public class MainActivity extends AppCompatActivity {
 
 ```
 
-##Change Log
+## Change Log
 [Change Log](https://github.com/jaychang0917/SocialLoginManager/blob/master/CHANGELOG.md)
 
-##License
+## License
 ```
 Copyright 2016 Jay Chang
 
