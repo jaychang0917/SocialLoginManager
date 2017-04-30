@@ -21,9 +21,10 @@ In your app level build.gradle :
 
 ```java
 dependencies {
-    compile 'com.github.jaychang0917:SocialLoginManager:1.1.4'
+    compile 'com.github.jaychang0917:SocialLoginManager:{latest_version}'
 }
 ```
+[![Release](https://jitpack.io/v/jaychang0917/SocialLoginManager.svg)](https://jitpack.io/#jaychang0917/SocialLoginManager)
 
 ## Usage
 
