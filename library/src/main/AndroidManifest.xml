@@ -1,19 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest package="com.jaychang.slm"
           xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- youtube data api permissions -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application>
         <activity
             android:name=".FbLoginHiddenActivity"
-            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            />
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation" />
         <activity
             android:name=".GoogleLoginHiddenActivity"
-            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            />
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation" />
         <activity
             android:name=".IgLoginActivity"
-            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            >
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation">
         </activity>
     </application>
 

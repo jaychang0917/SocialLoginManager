@@ -1,6 +1,7 @@
 package com.jaychang.slm;
 
 import android.app.ProgressDialog;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -32,6 +33,7 @@ public class IgLoginActivity extends AppCompatActivity {
   private String clientId;
   private String clientSecret;
   private String redirectUrl;
+  private ProgressDialog progressDialog;
 
   @Override
   protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,9 +42,25 @@ public class IgLoginActivity extends AppCompatActivity {
     clientSecret = getIntent().getStringExtra(EXTRA_CLIENT_SECRET);
     redirectUrl = getIntent().getStringExtra(EXTRA_REDIRECT_URL);
 
+    progressDialog = new ProgressDialog(this);
+    progressDialog.setMessage(getString(R.string.slm_loading));
+
     WebView webView = new WebView(this);
     webView.loadUrl(String.format(GET_CODE_URL, clientId, redirectUrl));
     webView.setWebViewClient(new WebViewClient() {
+
+      @Override
+      public void onPageStarted(WebView view, String url, Bitmap favicon) {
+        super.onPageStarted(view, url, favicon);
+        progressDialog.show();
+      }
+
+      @Override
+      public void onPageFinished(WebView view, String url) {
+        super.onPageFinished(view, url);
+        progressDialog.dismiss();
+      }
+
       @Override
       public boolean shouldOverrideUrlLoading(WebView view, String url) {
         if (url.startsWith(redirectUrl)) {
@@ -87,8 +105,7 @@ public class IgLoginActivity extends AppCompatActivity {
       .url(GET_TOKEN_URL)
       .build();
 
-    final ProgressDialog progressDialog = new ProgressDialog(this);
-    progressDialog.setMessage(getString(R.string.slm_loading));
+
     progressDialog.show();
 
     new OkHttpClient().newCall(request).enqueue(new Callback() {
