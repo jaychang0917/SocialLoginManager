@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
+import android.webkit.CookieManager;
 
 import com.facebook.FacebookSdk;
 
@@ -78,6 +80,14 @@ public class SocialLoginManager {
     userEmitter = PublishSubject.create();
     appContext.startActivity(getIntent());
     return userEmitter;
+  }
+
+  public void logout() {
+    if (Build.VERSION.SDK_INT >= 21) {
+      CookieManager.getInstance().removeAllCookies(null);
+    } else {
+      CookieManager.getInstance().removeAllCookie();
+    }
   }
 
   public Intent getIntent() {
