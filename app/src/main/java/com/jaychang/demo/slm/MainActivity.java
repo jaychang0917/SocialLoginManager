@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
   private void loginByInstagram() {
     SocialLoginManager.getInstance(this)
-      .instagram("client_id", "client_secret", "redirect_url")
+      .instagram("11993eff52bf400b92363b707da5fbbc", "c126345544a24ad68ec8aef3148b98bc", "https://github.com/jaychang0917/SocialLoginManager/")
       .login()
       .subscribe(socialUser -> {
         Log.d(TAG, "userId: " + socialUser.userId);
