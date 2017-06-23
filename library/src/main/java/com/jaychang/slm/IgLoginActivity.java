@@ -89,6 +89,7 @@ public class IgLoginActivity extends AppCompatActivity {
 
     final ProgressDialog progressDialog = new ProgressDialog(this);
     progressDialog.setMessage(getString(R.string.slm_loading));
+    progressDialog.show();
 
     new OkHttpClient().newCall(request).enqueue(new Callback() {
       @Override
