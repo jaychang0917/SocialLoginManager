@@ -12,6 +12,7 @@ import rx.subjects.PublishSubject;
 
 import static com.jaychang.slm.SocialLoginManager.SocialPlatform.FACEBOOK;
 import static com.jaychang.slm.SocialLoginManager.SocialPlatform.GOOGLE;
+import static com.jaychang.slm.SocialLoginManager.SocialPlatform.INSTAGRAM;
 
 public class SocialLoginManager {
 
@@ -24,6 +25,9 @@ public class SocialLoginManager {
   private boolean withProfile = true;
   private SocialPlatform socialPlatform;
   private String clientId;
+  private String igClientId;
+  private String igRedirectUrl;
+  private String igCleintSecret;
 
   private SocialLoginManager(Context context) {
     appContext = context.getApplicationContext();
@@ -53,8 +57,16 @@ public class SocialLoginManager {
   }
 
   public SocialLoginManager google(String clientId) {
-    this.clientId = clientId;
+    this.igClientId = clientId;
     this.socialPlatform = GOOGLE;
+    return this;
+  }
+
+  public SocialLoginManager instagram(String clientId, String clientSecret, String redirectUrl) {
+    this.igClientId = clientId;
+    this.igCleintSecret = clientSecret;
+    this.igRedirectUrl = redirectUrl;
+    this.socialPlatform = INSTAGRAM;
     return this;
   }
 
@@ -76,7 +88,14 @@ public class SocialLoginManager {
     } else if (socialPlatform == GOOGLE) {
       Intent intent = new Intent(appContext, GoogleLoginHiddenActivity.class);
       intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-      intent.putExtra(GoogleLoginHiddenActivity.EXTRA_CLIENT_ID, clientId);
+      intent.putExtra(GoogleLoginHiddenActivity.EXTRA_CLIENT_ID, igClientId);
+      return intent;
+    } else if (socialPlatform == INSTAGRAM) {
+      Intent intent = new Intent(appContext, IgLoginActivity.class);
+      intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+      intent.putExtra(IgLoginActivity.EXTRA_CLIENT_ID, igClientId);
+      intent.putExtra(IgLoginActivity.EXTRA_CLIENT_SECRET, igCleintSecret);
+      intent.putExtra(IgLoginActivity.EXTRA_REDIRECT_URL, igRedirectUrl);
       return intent;
     } else {
       throw new IllegalStateException(ERROR);
@@ -109,7 +128,7 @@ public class SocialLoginManager {
   }
 
   enum SocialPlatform {
-    FACEBOOK, GOOGLE
+    FACEBOOK, GOOGLE, INSTAGRAM
   }
 
 }

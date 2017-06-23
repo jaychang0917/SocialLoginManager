@@ -23,9 +23,13 @@ public class MainActivity extends AppCompatActivity {
 
     Button googleLoginButton = (Button) findViewById(R.id.googleLoginButton);
     googleLoginButton.setOnClickListener(view -> {
-       loginByGoogle();
+      loginByGoogle();
     });
 
+    Button igLoginButton = (Button) findViewById(R.id.igLoginButton);
+    igLoginButton.setOnClickListener(view -> {
+      loginByInstagram();
+    });
   }
 
   private void loginByFacebook() {
@@ -59,6 +63,21 @@ public class MainActivity extends AppCompatActivity {
         error -> {
           Log.d(TAG, "error: " + error.getMessage());
         });
+  }
+
+  private void loginByInstagram() {
+    SocialLoginManager.getInstance(this)
+      .instagram("11993eff52bf400b92363b707da5fbbc", "c126345544a24ad68ec8aef3148b98bc", "https://github.com/jaychang0917/SocialLoginManager/")
+      .login()
+      .subscribe(socialUser -> {
+        Log.d(TAG, "userId: " + socialUser.userId);
+        Log.d(TAG, "photoUrl: " + socialUser.photoUrl);
+        Log.d(TAG, "accessToken: " + socialUser.accessToken);
+        Log.d(TAG, "name: " + socialUser.profile.name);
+        Log.d(TAG, "fullName: " + socialUser.profile.fullName);
+      }, error -> {
+        Log.d(TAG, "error: " + error.getMessage());
+      });
   }
 
 }
