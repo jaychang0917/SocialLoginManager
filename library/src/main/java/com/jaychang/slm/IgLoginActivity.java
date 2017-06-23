@@ -1,5 +1,6 @@
 package com.jaychang.slm;
 
+import android.app.ProgressDialog;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -86,16 +87,16 @@ public class IgLoginActivity extends AppCompatActivity {
       .url(GET_TOKEN_URL)
       .build();
 
-    SocialLoginManager.getInstance(IgLoginActivity.this).getShowLoadingTask().run();
+    final ProgressDialog progressDialog = new ProgressDialog(this);
+    progressDialog.setMessage(getString(R.string.slm_loading));
 
     new OkHttpClient().newCall(request).enqueue(new Callback() {
       @Override
       public void onFailure(Call call, IOException e) {
-        SocialLoginManager.getInstance(IgLoginActivity.this).getHideLoadingTask().run();
-
         runOnUiThread(new Runnable() {
           @Override
           public void run() {
+            progressDialog.dismiss();
             SocialLoginManager.getInstance(IgLoginActivity.this).onLoginError(new RuntimeException("instagram login fail"));
             finish();
           }
@@ -104,13 +105,12 @@ public class IgLoginActivity extends AppCompatActivity {
 
       @Override
       public void onResponse(Call call, Response response) throws IOException {
-        SocialLoginManager.getInstance(IgLoginActivity.this).getHideLoadingTask().run();
-
         if (!response.isSuccessful()) {
           runOnUiThread(new Runnable() {
             @Override
             public void run() {
               SocialLoginManager.getInstance(IgLoginActivity.this).onLoginError(new RuntimeException("instagram login fail"));
+              progressDialog.dismiss();
               finish();
             }
           });
@@ -134,6 +134,7 @@ public class IgLoginActivity extends AppCompatActivity {
           @Override
           public void run() {
             SocialLoginManager.getInstance(IgLoginActivity.this).onLoginSuccess(user);
+            progressDialog.dismiss();
             finish();
           }
         });
