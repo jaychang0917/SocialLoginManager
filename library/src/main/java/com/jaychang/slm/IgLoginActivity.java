@@ -55,7 +55,6 @@ public class IgLoginActivity extends AppCompatActivity {
           boolean hasCode = !TextUtils.isEmpty(uri.getQueryParameter("code"));
           if (hasCode) {
             getUserResponse(url);
-            finish();
           }
         }
         return false;
@@ -87,9 +86,13 @@ public class IgLoginActivity extends AppCompatActivity {
       .url(GET_TOKEN_URL)
       .build();
 
+    SocialLoginManager.getInstance(IgLoginActivity.this).getShowLoadingTask().run();
+
     new OkHttpClient().newCall(request).enqueue(new Callback() {
       @Override
       public void onFailure(Call call, IOException e) {
+        SocialLoginManager.getInstance(IgLoginActivity.this).getHideLoadingTask().run();
+
         runOnUiThread(new Runnable() {
           @Override
           public void run() {
@@ -101,6 +104,8 @@ public class IgLoginActivity extends AppCompatActivity {
 
       @Override
       public void onResponse(Call call, Response response) throws IOException {
+        SocialLoginManager.getInstance(IgLoginActivity.this).getHideLoadingTask().run();
+
         if (!response.isSuccessful()) {
           runOnUiThread(new Runnable() {
             @Override

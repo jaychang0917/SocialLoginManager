@@ -28,6 +28,8 @@ public class SocialLoginManager {
   private String igClientId;
   private String igRedirectUrl;
   private String igCleintSecret;
+  private Runnable showLoadingTask;
+  private Runnable hideLoadingTask;
 
   private SocialLoginManager(Context context) {
     appContext = context.getApplicationContext();
@@ -68,6 +70,24 @@ public class SocialLoginManager {
     this.igRedirectUrl = redirectUrl;
     this.socialPlatform = INSTAGRAM;
     return this;
+  }
+
+  public SocialLoginManager showLoadingTask(Runnable loadingTask) {
+    this.showLoadingTask = loadingTask;
+    return this;
+  }
+
+  Runnable getShowLoadingTask() {
+    return showLoadingTask;
+  }
+
+  public SocialLoginManager hideLoadingTask(Runnable hideLoadingTask) {
+    this.hideLoadingTask = hideLoadingTask;
+    return this;
+  }
+
+  Runnable getHideLoadingTask() {
+    return hideLoadingTask;
   }
 
   public static void init(Application application) {
