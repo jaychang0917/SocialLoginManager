@@ -1,3 +1,6 @@
+# PLEASE NOTE, THIS PROJECT IS NO LONGER BEING MAINTAINED
+Please check out [SimpleAuth](https://github.com/jaychang0917/SimpleAuth)
+
 # SocialLoginManager
 [![Release](https://jitpack.io/v/jaychang0917/SocialLoginManager.svg)](https://jitpack.io/#jaychang0917/SocialLoginManager)
 
